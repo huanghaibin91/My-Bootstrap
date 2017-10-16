@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modal</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- Large modal -->
+    <!-- 务必将模态框的 HTML 代码放在文档的最高层级内（也就是说，尽量作为 body 标签的直接子元素），
+        以避免其他组件影响模态框的展现和/或功能 -->
+
+        <!-- 通过 data 属性：在控制器元素（比如按钮或者链接）上设置属性 data-toggle="modal"切换显示隐藏模态框，同时设置 
+            按钮data-target="#id | .class" 或 链接href="#identifier" 来指定要切换的特定的模态框 -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example-modal">
+        弹出
+    </button>
+    <!-- 使用script调用模态框 -->
+    <button type="button" class="btn btn-primaty modal-btn">
+        弹出
+    </button>
+    <!-- 模态框最外层，可以设置一个特殊类名或id方便按钮调用 -->
+    <!-- .modal，用来把 <div> 的内容识别为模态框。
+        .fade class。当模态框被切换时，它会引起内容淡入淡出，如果你不需要模态框弹出时的动画效果（淡入淡出效果），删掉.fade类即可
+        aria-hidden="true" 用于保持模态窗口不可见，直到触发器被触发为止（比如点击在相关的按钮上） -->
+    <!-- tabindex 属性规定元素的 tab 键控制次序从小到大移动（当tab键用于导航时），设为-1为排除在tab序列之外
+        role="dialog"，用于指定模态框为对话框 -->
+    <!-- 务必为 .modal 添加 role="dialog" 和 aria-labelledby="..." 属性，用于指向模态框的标题栏；为 .modal-dialog 
+        添加 aria-hidden="true" 属性。另外，你还应该通过 aria-describedby 属性为模态框 .modal 添加描述性信息
+        aria-labelledby 和 aria-label两个属性是为特殊网页阅读器设置的属性，在一些特殊设备上，当浏览到这样的内容设备会将内容
+        读出来。是为了一些有视力障碍的人能够同样”浏览”网页而准备的，aria-labelledby="myModalLabel"，该属性引用模态框的标题 -->
+    <!-- 可以在模态框顶层插入data-数据设置modal(options)的options的参数 -->
+    <div class="modal fade example-modal" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="myModalLabel" aria-describedby="modalDescribedby">
+        <!-- role是HTML5的标签属性，可以用于标识一个普通的标签，使之语义化，方便浏览器对其具体功能进行识别，role="document"
+        使div表现为document -->
+        <!-- class="modal-dialog"遮罩层 -->
+        <div class="modal-dialog" role="document">
+            <!-- 内容主体区 -->
+            <div class="modal-content">
+                <!-- 头部 -->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">模态框标题</h4>
+                </div>
+                <!-- 主体 -->
+                <div class="modal-body">
+                    <p>模态框主体</p>
+                </div>
+                <!-- 页脚 -->
+                <div class="modal-footer">
+                    <!-- data-dismiss="modal"，是一个自定义的 HTML5 data 属性。在这里它被用于关闭模态窗口 -->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">保存修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <!-- 模态框提供了两个可选尺寸，通过为 .modal-dialog 增加一个样式调整类实现 -->
+        <!-- modal-lg，大模态框，modal-sm，小模态框 -->
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content"> ... </div>
+        </div>
+    </div>
+    <!-- Small modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content"> ... </div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script>
+        $(document).ready(function () {
+            $('.modal-btn').on('click', function () {
+                // .modal('toggle') 切换模态框
+                // .modal('show') 显示模态框
+                // $('.example-modal').modal('show');
+                // .modal('hide') 隐藏模态框
+                // .modal(options)
+                // options参数：
+                // keyboard，boolean，默认true，键盘上的 esc 键被按下时关闭模态框
+                // show，boolean，默认true，模态框初始化之后就立即显示出来
+                // backdrop，boolean或'static'，默认true，默认情况下，点击其它位置，模态框自动关闭，
+                // 你可以设置此属性为false或者"static"防止模态框自动关闭
+                $('.example-modal').modal({
+                    // backdrop: false
+                });
+            });
+            // 钩子函数：
+            // show.bs.modal 在调用 show 方法后触发
+            // shown.bs.modal 当模态框对用户可见时触发（将等待 CSS 过渡效果完成）
+            // hide.bs.modal 当调用 hide 实例方法时触发
+            // hidden.bs.modal 当模态框完全对用户隐藏时触发
+            // loaded.bs.modal 从远端的数据源加载完数据之后触发该事件
+            $('.example-modal').on('show.bs.modal', function () {
+                alert('模态框显示！')
+            });
+        });
+    </script>
+</body>
+
+</html>

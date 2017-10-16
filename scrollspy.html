@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scrollspy</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <!-- .navbar，定义一个导航栏 -->
+    <!-- 导航栏设定特有的id或class，用于与主体绑定 -->
+    <!-- .navbar-fixed-top 类可以让导航条固定在顶部，
+        .navbar-fixed-bottom 类可以让导航条固定在底部，
+        .navbar-static-top 类即可创建一个与页面等宽度的导航条，它会随着页面向下滚动而消失
+        还可包含一个 .container 或 .container-fluid 容器，从而让导航条居中 -->
+    <!-- .navbar-inverse 类可以改变导航条的外观 -->
+    <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+        <!-- .container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器 -->
+        <div class="container-fluid">
+            <!-- .navbar-header，导航栏标题 -->
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- 替换为 <img> 元素即可展示自己的品牌图标.navbar-brand -->
+                <a class="navbar-brand" href="#">教程名称</a>
+            </div>
+            <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <!-- 导航链接的href绑定滚动主体的id，当滚动到目标位置使就会触发导航栏样式变化 -->
+                        <a href="#ios">iOS</a>
+                    </li>
+                    <li>
+                        <a href="#svn">SVN</a>
+                    </li>
+                    <!-- 下拉菜单 -->
+                    <!-- 通过为下拉菜单的父元素设置 .dropup 类，可以让菜单向上弹出（默认是向下弹出的） -->
+                    <li class="dropdown">
+                        <!-- 通过 data 属性：向链接或按钮添加 data-toggle="dropdown" 来切换下拉菜单
+                        或者JS，$('.dropdown-toggle').dropdown()，dropdown('toggle')参数，下拉菜单默认显示 -->
+                        <!-- 如果你的href属性另有用处，data-target 属性代替 href="#" -->
+                        <!-- <a href="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Java
+                            <b class="caret"></b>
+                        </a> -->
+                        <a href="http://www.bootcss.com/" data-target="#" id="navbarDrop1" class="dropdown-toggle" data-toggle="dropdown">Java
+                            <b class="caret"></b>
+                        </a>
+                        <!-- 下拉菜单的内容.dropdown-menu -->
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="navbarDrop1">
+                            <!-- 任何下拉菜单中均可通过添加标题来标明一组动作 -->
+                            <li class="dropdown-header">Dropdown header</li>
+                            <li>
+                                <a href="#jmeter" tabindex="-1">jmeter</a>
+                            </li>
+                            <!-- <li> 元素添加 .disabled 类，从而禁用相应的菜单项 -->
+                            <li class="disabled">
+                                <a href="#ejb" tabindex="-1">ejb</a>
+                            </li>
+                            <!-- .divider分割线 -->
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#spring" tabindex="-1">spring</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- 将表单放置于 .navbar-form 之内可以呈现很好的垂直对齐，并在较窄的视口（viewport）中呈现折叠状态 -->
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <!-- .navbar-text中时，为了有正确的行距和颜色，通常使用 <p> 标签 -->
+                <p class="navbar-text">Signed in as Mark Otto</p>
+                <!-- 对于不包含在 <form> 中的 <button> 元素，加上 .navbar-btn 后，可以让它在导航条里垂直居中 -->
+                <button type="button" class="btn btn-default navbar-btn">Submit</button>
+            </div>
+        </div>
+    </nav>
+    <!-- 内容主体 -->
+    <!-- 滚动监听都需要被监听的组件是 position: relative; 即相对定位方式。大多数时候是监听 <body> 元素，如果是其它元素，
+        需要设置高度和overflow-y: scroll; -->
+    <!-- 通过 data 属性：向您想要监听的元素（通常是 body）添加 data-spy="scroll"
+        data-target连接导航栏的id或class让两者绑定一起 -->
+    <div data-spy="scroll" class="scroll-box" data-target="#navbar-example" data-offset="0" style="height:200px;overflow:auto; position: relative;">
+        <!-- 滚动监听的主体中设置id -->
+        <h4 id="ios">iOS</h4>
+        <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS
+            是苹果的移动版本。
+        </p>
+        <h4 id="svn">SVN</h4>
+        <p>Apache Subversion，通常缩写为 SVN，是一款开源的版本控制系统软件。Subversion 由 CollabNet 公司在 2000 年创建。但是现在它已经发展为 Apache Software Foundation
+            的一个项目，因此拥有丰富的开发人员和用户社区。
+        </p>
+        <h4 id="jmeter">jMeter</h4>
+        <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。
+        </p>
+        <h4 id="ejb">EJB</h4>
+        <p>Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+        </p>
+        <h4 id="spring">Spring</h4>
+        <p>Spring 框架是一个开源的 Java 平台，为快速开发功能强大的 Java 应用程序提供了完备的基础设施支持。
+        </p>
+        <p>Spring 框架最初是由 Rod Johnson 编写的，在 2003 年 6 月首次发布于 Apache 2.0 许可证下。
+        </p>
+    </div>
+    <span id="activeitem" style="color:red;"></span>
+
+    <!-- script -->
+    <script>
+        $(document).ready(function () {
+            // 可以通过 JavaScript 调用滚动监听，选取要监听的元素，然后调用 .scrollspy() 函数将其绑定到导航栏上
+            $('.scroll-box').scrollspy({
+                taeget: '#navbar-example'
+            });
+            // 当使用滚动监听插件的同时在 DOM 中添加或删除元素后，你需要像下面这样调用此刷新（ refresh） 方法
+            $('[data-spy="scroll"]').each(function () {
+                var $spy = $(this).scrollspy('refresh')
+            });
+            // activate.bs.scrollspy，每当一个新条目被激活后都将由滚动监听插件触发此事件
+            $('#navbar-example').on('activate.bs.scrollspy', function () {
+                var currentItem = $(".nav li.active > a").text();
+                $("#activeitem").html("目前您正在查看 - " + currentItem);
+            });
+        });
+    </script>
+</body>
+
+</html>
