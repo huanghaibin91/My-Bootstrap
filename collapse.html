@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Collapse</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!-- 创建可折叠的分组或折叠面板（accordion） -->
+    <!-- .panel-group折叠组 -->
+    <div class="panel-group" id="accordion">
+        <!-- .panel折叠面板 -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <!-- data-toggle="collapse" 添加到您想要展开或折叠的组件的链接上
+                    href 或 data-target 属性添加到父组件，它的值是子组件的 id
+                    data-parent 属性把折叠面板（accordion）的 id 添加到要展开或折叠的组件的链接上 -->
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        点击我进行展开，再次点击我进行折叠。第 1 部分
+                    </a>
+                </h4>
+            </div>
+            <!-- 折叠内容部分 -->
+            <!-- 默认情况下是打开的，请添加额外的 class .in -->
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                    vice lomo.
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        点击我进行展开，再次点击我进行折叠。第 2 部分
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
+                    vice lomo.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script>
+        $(document).ready(function () {
+
+            // // 绑定到折叠内容元素上触发
+            // 方法：
+            // .collapse(options) 激活内容为可折叠元素。接受一个可选的 options 对象
+            // .collapse('toggle') 切换显示/隐藏可折叠元素
+            // .collapse('show') 显示可折叠元素
+            // .collapse('hide') 隐藏可折叠元素
+            
+            // 事件：
+            // show.bs.collapse	在调用 show 方法后触发该事件
+            // shown.bs.collapse	当折叠元素对用户可见时触发该事件（将等待 CSS 过渡效果完成）
+            // hide.bs.collapse	当调用 hide 实例方法时立即触发该事件
+            // hidden.bs.collapse	当折叠元素对用户隐藏时触发该事件（将等待 CSS 过渡效果完成）
+
+        });
+    </script>
+</body>
+
+</html>
